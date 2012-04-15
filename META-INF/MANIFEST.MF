@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Fragment-Host: org.slf4j.api;bundle-version="[1.6.0,1.7.0)"
+Bundle-SymbolicName: com.github.marschall.slf4j-equinox;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-Vendor: %providerName
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ActivationPolicy: lazy
+Bundle-Localization: fragment
+Provide-Capability: org.slf4j.impl.StaticLoggerBinder; version="1.6.4"
+Eclipse-GenericCapability: org.slf4j.impl.StaticLoggerBinder; version="1.6.4"
+Import-Package: org.eclipse.equinox.log;version="[1.0.0,2.0.0)",
+ org.osgi.framework;version="[1.0.0,2.0.0)",
+ org.osgi.service.log;version="[1.0.0,2.0.0)",
+ org.osgi.util.tracker;version="[1.0.0,2.0.0)",
+ org.slf4j;version="[1.6.0,1.7.0)",
+ org.slf4j.helpers;version="[1.6.0,1.7.0)",
+ org.slf4j.spi;version="[1.6.0,1.7.0)"
