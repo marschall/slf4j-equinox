@@ -34,8 +34,8 @@ final class EquinoxLoggerFactory implements ILoggerFactory {
 		// this is a bit hairy
 		// since we're a bundle we can't have an activator we have to work around this
 		
-		// reimplement BundleActivator#start() 
 		final Bundle bundle = FrameworkUtil.getBundle(EquinoxLoggerFactory.class);
+		// start the bundle so that we have a bundle context
 		if (bundle.getState() == Bundle.RESOLVED) {
 			try {
 				bundle.start();
@@ -43,6 +43,7 @@ final class EquinoxLoggerFactory implements ILoggerFactory {
 				throw new RuntimeException("could not start bundle", e);
 			}
 		}
+		// reimplement BundleActivator#start() 
 		final BundleContext context = bundle.getBundleContext();
 		final ServiceTracker<?, ExtendedLogService> serviceTracker =
 				new ServiceTracker<ExtendedLogService, ExtendedLogService>(context, ExtendedLogService.class, null);
