@@ -24,12 +24,13 @@ Since a bundle can not have an activator we have to manually get a <code>BundleC
 Building
 --------
 If you want to build this project then you need [Maven 3](http://maven.apache.org/) and add the following section to your <code>settings.xml</code>
+
 ```xml
-  <repositories>
-    <repository>
-      <id>indigo</id>
-      <layout>p2</layout>
-      <url>http://download.eclipse.org/releases/indigo</url>
-    </repository>
-  </repositories>
+<repositories>
+  <repository>
+    <id>indigo</id>
+    <layout>p2</layout>
+    <url>http://download.eclipse.org/releases/indigo</url>
+  </repository>
+</repositories>
 ```
