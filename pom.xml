@@ -1,10 +1,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.marschall</groupId>
-  <artifactId>slf4j-equinox</artifactId>
+  <artifactId>com.github.marschall.slf4j-equinox</artifactId>
   <version>0.1.0-SNAPSHOT</version>
-  <inceptionYear>2010</inceptionYear>
+  <name>slf4j-equinox</name>
   <packaging>eclipse-plugin</packaging>
+  
+  <inceptionYear>2012</inceptionYear>
+  <description>
+  	An SLF4J implementation using the Equinox ExtendedLogService.
+  </description>
+  <url>https://github.com/marschall/slf4j-equinox</url>
   
   <prerequisites>
     <maven>3.0</maven>
