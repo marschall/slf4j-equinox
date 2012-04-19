@@ -52,7 +52,7 @@ java -jar <targetProductFolder>/plugins/org.eclipse.equinox.launcher_*.jar \
 Installing
 ----------
 You can install form the site you built above using the [p2 director application](http://help.eclipse.org/indigo/index.jsp?topic=/org.eclipse.platform.doc.isv/guide/p2_director.html)
-```
+```shell
 java -jar <targetProductFolder>/plugins/org.eclipse.equinox.launcher_*.jar \
 -application org.eclipse.equinox.p2.director \
 -repository file:/<some location>/repository \
