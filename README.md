@@ -34,3 +34,31 @@ If you want to build this project then you need [Maven 3](http://maven.apache.or
   </repository>
 </repositories>
 ```
+
+Publishing
+----------
+To publish the artifact to a p2 site (or build a new one) you can use the [Features And Bundles Publisher Application](http://wiki.eclipse.org/Equinox/p2/Publisher#Features_And_Bundles_Publisher_Application)
+```
+java -jar <targetProductFolder>/plugins/org.eclipse.equinox.launcher_*.jar
+-application org.eclipse.equinox.p2.publisher.FeaturesAndBundlesPublisher
+-metadataRepository file:/<some location>/repository
+-artifactRepository file:/<some location>/repository
+-source /<location with a plugin and feature directory>
+-configs gtk.linux.x86
+-compress
+-publishArtifacts
+```
+
+Installing
+----------
+You can install form the site you built above using the [p2 director application](http://help.eclipse.org/indigo/index.jsp?topic=/org.eclipse.platform.doc.isv/guide/p2_director.html)
+```
+java -jar <targetProductFolder>/plugins/org.eclipse.equinox.launcher_*.jar
+-application org.eclipse.equinox.p2.director
+-repository file:/<some location>/repository
+-installIU com.github.marschall.slf4j-equinox
+-uninstallIU org.slf4j.log4j,ch.qos.logback.slf4j,org.eclipse.jetty.slf4jlogback.feature.group,org.eclipse.jetty.sdk.feature.group
+-tag slf4j-equinox
+-destination <targetProductFolder>
+```
+
