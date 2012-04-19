@@ -2,7 +2,7 @@ SLF4J Equinox
 =============
 This is an implementation [SLF4J](http://www.slf4j.org/) using the [Equinox](http://www.eclipse.org/equinox/) [ExtendedLogService](https://bugs.eclipse.org/bugs/show_bug.cgi?id=260672).
 
-In plain words it allows you to use SLF4J and log to Equinox. It does _not_ make Equinox use SLF4J. This is mostly interesting for code that runs inside Eclipse RCP applications.
+In plain words it makes all code that uses SLF4J and log to Equinox <code>.metadata/.log</code> log file. It does this by redirecting all the log messages to the Equinox ExtendedLogService. This is mostly interesting for code that runs inside Eclipse RCP applications. This does _not_ make Equinox use SLF4J. 
 
 The implementation uses the same techniques as the <code>ch.qos.logback.slf4j</code> bundle.
 
