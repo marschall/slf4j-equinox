@@ -38,7 +38,8 @@ If you want to build this project then you need [Maven 3](http://maven.apache.or
 Publishing
 ----------
 To publish the artifact to a p2 site (or build a new one) you can use the [Features And Bundles Publisher Application](http://wiki.eclipse.org/Equinox/p2/Publisher#Features_And_Bundles_Publisher_Application)
-```
+
+```sh
 java -jar <targetProductFolder>/plugins/org.eclipse.equinox.launcher_*.jar \
 -application org.eclipse.equinox.p2.publisher.FeaturesAndBundlesPublisher \
 -metadataRepository file:/<some location>/repository \
@@ -52,6 +53,7 @@ java -jar <targetProductFolder>/plugins/org.eclipse.equinox.launcher_*.jar \
 Installing
 ----------
 You can install form the site you built above using the [p2 director application](http://help.eclipse.org/indigo/index.jsp?topic=/org.eclipse.platform.doc.isv/guide/p2_director.html)
+
 ```shell
 java -jar <targetProductFolder>/plugins/org.eclipse.equinox.launcher_*.jar \
 -application org.eclipse.equinox.p2.director \
