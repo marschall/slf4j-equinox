@@ -44,7 +44,7 @@ java -jar <targetProductFolder>/plugins/org.eclipse.equinox.launcher_*.jar \
 -application org.eclipse.equinox.p2.publisher.FeaturesAndBundlesPublisher \
 -metadataRepository file:/<some location>/repository \
 -artifactRepository file:/<some location>/repository \
--source /<location with a plugin and feature directory> \
+-source /<location with a plugins and features directory> \
 -configs gtk.linux.x86 \
 -compress \
 -publishArtifacts
