@@ -10,27 +10,27 @@ import org.slf4j.spi.MDCAdapter;
  */
 public final class StaticMDCBinder {
 
-	/**
-	 * The unique instance of this class.
-	 */
-	public static final StaticMDCBinder SINGLETON = new StaticMDCBinder();
+  /**
+   * The unique instance of this class.
+   */
+  public static final StaticMDCBinder SINGLETON = new StaticMDCBinder();
 
-	private StaticMDCBinder() {
-		super();
-	}
+  private StaticMDCBinder() {
+    super();
+  }
 
-	/**
-	 * Currently this method always returns an instance of 
-	 * {@link BasicMDCAdapter}.
-	 */
-	public MDCAdapter getMDCA() {
-		// note that this method is invoked only from within the static initializer of 
-		// the org.slf4j.MDC class.
-		return new BasicMDCAdapter();
-	}
+  /**
+   * Currently this method always returns an instance of
+   * {@link BasicMDCAdapter}.
+   */
+  public MDCAdapter getMDCA() {
+    // note that this method is invoked only from within the static initializer of
+    // the org.slf4j.MDC class.
+    return new BasicMDCAdapter();
+  }
 
-	public String  getMDCAdapterClassStr() {
-		return BasicMDCAdapter.class.getName();
-	}
+  public String getMDCAdapterClassStr() {
+    return BasicMDCAdapter.class.getName();
+  }
 
 }

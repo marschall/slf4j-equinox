@@ -1,11 +1,11 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Fragment-Host: org.slf4j.api;bundle-version="[1.6.0,1.7.0)"
+Fragment-Host: org.slf4j.api;bundle-version="[1.6.0,1.8.0)"
 Bundle-SymbolicName: com.github.marschall.slf4j-equinox;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Bundle-Vendor: %providerName
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: fragment
 Provide-Capability: org.slf4j.impl.StaticLoggerBinder; version="1.6.4"
