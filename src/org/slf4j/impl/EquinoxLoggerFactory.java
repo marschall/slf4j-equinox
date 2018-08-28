@@ -8,7 +8,6 @@ import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.BundleEvent;
 import org.osgi.framework.BundleException;
-import org.osgi.framework.BundleListener;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.util.tracker.ServiceTracker;
 import org.slf4j.ILoggerFactory;
@@ -34,7 +33,7 @@ final class EquinoxLoggerFactory implements ILoggerFactory {
     // this is a bit hairy
     // since we're a bundle we can't have an activator we have to work around this
 
-    final Bundle bundle = FrameworkUtil.getBundle(EquinoxLoggerFactory.class);
+    Bundle bundle = FrameworkUtil.getBundle(EquinoxLoggerFactory.class);
     // start the bundle so that we have a bundle context
     if (bundle.getState() == Bundle.RESOLVED) {
       try {
@@ -44,21 +43,16 @@ final class EquinoxLoggerFactory implements ILoggerFactory {
       }
     }
     // reimplement BundleActivator#start()
-    final BundleContext context = bundle.getBundleContext();
-    final ServiceTracker<?, ExtendedLogService> serviceTracker =
+    BundleContext context = bundle.getBundleContext();
+    ServiceTracker<?, ExtendedLogService> serviceTracker =
         new ServiceTracker<>(context, ExtendedLogService.class, null);
 
     serviceTracker.open();
     // reimplement BundleActivator#stop()
-    context.addBundleListener(new BundleListener() {
-
-      @Override
-      public void bundleChanged(BundleEvent event) {
-        if (event.getBundle().getBundleId() == bundle.getBundleId()
-            && event.getType() == BundleEvent.STOPPING) {
-          serviceTracker.close();
-        }
-
+    context.addBundleListener((BundleEvent event) -> {
+      if (event.getBundle().getBundleId() == bundle.getBundleId()
+          && event.getType() == BundleEvent.STOPPING) {
+        serviceTracker.close();
       }
     });
 
