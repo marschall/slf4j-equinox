@@ -38,7 +38,7 @@ public class StaticLoggerBinder implements LoggerFactoryBinder {
    * The ILoggerFactory instance returned by the {@link #getLoggerFactory}
    * method should always be the same object
    */
-  private ILoggerFactory loggerFactory;
+  private final ILoggerFactory loggerFactory;
 
   private StaticLoggerBinder() {
     this.loggerFactory = new EquinoxLoggerFactory();
