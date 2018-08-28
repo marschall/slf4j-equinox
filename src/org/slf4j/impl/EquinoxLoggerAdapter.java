@@ -16,12 +16,15 @@ import org.slf4j.spi.LocationAwareLogger;
  * A wrapper over {@linkorg.eclipse.equinox.log.Logger} in
  * conforming to the {@link org.slf4j.Logger} interface.
  *
- * <p>The TRACE level will be mapped as DEBUG.</p>
- *
  * @author Philippe Marschall
  */
-final class EquinoxLoggerAdapter extends MarkerIgnoringBase
-implements org.slf4j.Logger, LocationAwareLogger {
+final class EquinoxLoggerAdapter extends MarkerIgnoringBase implements org.slf4j.Logger, LocationAwareLogger {
+  
+
+  /**
+   * Anything that is not one of LOG_DEBUG, LOG_ERROR, LOG_INFO, LOG_WARNING is trace.
+   */
+  private static final int LOG_TRACE = LOG_DEBUG + 1;
 
   //TODO should the marker be the equinox log context?
 
@@ -33,23 +36,17 @@ implements org.slf4j.Logger, LocationAwareLogger {
 
   @Override
   public void debug(String msg) {
-    this.logger.log(null, LOG_DEBUG, msg, null);
+    this.logger.debug(msg);
   }
 
   @Override
   public void debug(String format, Object arg) {
-    if (this.isDebugEnabled()) {
-      FormattingTuple ft = MessageFormatter.format(format, arg);
-      this.logger.log(null, LOG_DEBUG, ft.getMessage(), null);
-    }
+    this.logger.debug(format, arg);
   }
 
   @Override
-  public void debug(String format, Object[] argArray) {
-    if (this.isDebugEnabled()) {
-      FormattingTuple ft = MessageFormatter.arrayFormat(format, argArray);
-      this.logger.log(null, LOG_DEBUG, ft.getMessage(), null);
-    }
+  public void debug(String format, Object... argArray) {
+    this.logger.debug(format, argArray);
   }
 
   @Override
@@ -60,31 +57,22 @@ implements org.slf4j.Logger, LocationAwareLogger {
 
   @Override
   public void debug(String format, Object arg1, Object arg2) {
-    if (this.isDebugEnabled()) {
-      FormattingTuple ft = MessageFormatter.format(format, arg1, arg2);
-      this.logger.log(null, LOG_DEBUG, ft.getMessage(), null);
-    }
+    this.logger.debug(format, arg1, arg2);
   }
 
   @Override
   public void error(String msg) {
-    this.logger.log(null, LOG_ERROR, msg, null);
+    this.logger.error(msg);
   }
 
   @Override
   public void error(String format, Object arg) {
-    if (this.isErrorEnabled()) {
-      FormattingTuple ft = MessageFormatter.format(format, arg);
-      this.logger.log(null, LOG_ERROR, ft.getMessage(), null);
-    }
+    this.logger.error(format, arg);
   }
 
   @Override
-  public void error(String format, Object[] argArray) {
-    if (this.isErrorEnabled()) {
-      FormattingTuple ft = MessageFormatter.arrayFormat(format, argArray);
-      this.logger.log(null, LOG_ERROR, ft.getMessage(), null);
-    }
+  public void error(String format, Object... argArray) {
+    this.logger.error(format, argArray);
   }
 
   @Override
@@ -94,10 +82,7 @@ implements org.slf4j.Logger, LocationAwareLogger {
 
   @Override
   public void error(String format, Object arg1, Object arg2) {
-    if (this.isErrorEnabled()) {
-      FormattingTuple ft = MessageFormatter.format(format, arg1, arg2);
-      this.logger.log(null, LOG_DEBUG, ft.getMessage(), null);
-    }
+    this.logger.error(format, arg1, arg2);
   }
 
   @Override
@@ -107,23 +92,17 @@ implements org.slf4j.Logger, LocationAwareLogger {
 
   @Override
   public void info(String msg) {
-    this.logger.log(null, LOG_INFO, msg, null);
+    this.logger.info(msg);
   }
 
   @Override
   public void info(String format, Object arg) {
-    if (this.isInfoEnabled()) {
-      FormattingTuple ft = MessageFormatter.format(format, arg);
-      this.logger.log(null, LOG_INFO, ft.getMessage(), null);
-    }
+    this.logger.info(format, arg);
   }
 
   @Override
-  public void info(String format, Object[] argArray) {
-    if (this.isInfoEnabled()) {
-      FormattingTuple ft = MessageFormatter.arrayFormat(format, argArray);
-      this.logger.log(null, LOG_INFO, ft.getMessage(), null);
-    }
+  public void info(String format, Object... argArray) {
+    this.logger.info(format, argArray);
   }
 
   @Override
@@ -133,97 +112,84 @@ implements org.slf4j.Logger, LocationAwareLogger {
 
   @Override
   public void info(String format, Object arg1, Object arg2) {
-    if (this.isInfoEnabled()) {
-      FormattingTuple ft = MessageFormatter.format(format, arg1, arg2);
-      this.logger.log(null, LOG_INFO, ft.getMessage(), null);
-    }
+    this.logger.info(format, arg1, arg2);
   }
 
   @Override
   public boolean isDebugEnabled() {
-    return this.logger.isLoggable(LOG_DEBUG);
+    return this.logger.isDebugEnabled();
   }
 
   @Override
   public boolean isErrorEnabled() {
-    return this.logger.isLoggable(LOG_ERROR);
+    return this.logger.isErrorEnabled();
   }
 
   @Override
   public boolean isInfoEnabled() {
-    return this.logger.isLoggable(LOG_INFO);
+    return this.logger.isInfoEnabled();
   }
 
   @Override
   public boolean isTraceEnabled() {
-    return this.isDebugEnabled();
+    return this.isTraceEnabled();
   }
 
   @Override
   public boolean isWarnEnabled() {
-    return this.logger.isLoggable(LOG_WARNING);
+    return this.logger.isWarnEnabled();
   }
 
-  // trace mapped to debug
   @Override
   public void trace(String msg) {
-    this.debug(msg);
+    this.trace(msg);
   }
 
   @Override
   public void trace(String format, Object arg) {
-    this.debug(format, arg);
+    this.trace(format, arg);
   }
 
   @Override
-  public void trace(String format, Object[] argArray) {
-    this.debug(format, argArray);
+  public void trace(String format, Object... argArray) {
+    this.trace(format, argArray);
   }
 
   @Override
   public void trace(String msg, Throwable t) {
-    this.debug(msg, t);
+    this.logger.log(null, LOG_TRACE, msg, t);
   }
 
   @Override
   public void trace(String format, Object arg1, Object arg2) {
-    this.debug(format, arg1, arg2);
+    this.trace(format, arg1, arg2);
   }
 
   @Override
   public void warn(String msg) {
-    this.logger.log(null, WARN_INT, msg, null);
+    this.logger.warn(msg);
 
   }
 
   @Override
   public void warn(String format, Object arg) {
-    if (this.isWarnEnabled()) {
-      FormattingTuple ft = MessageFormatter.format(format, arg);
-      this.logger.log(null, WARN_INT, ft.getMessage(), null);
-    }
+    this.logger.warn(format, arg);
 
   }
 
   @Override
-  public void warn(String format, Object[] argArray) {
-    if (this.isWarnEnabled()) {
-      FormattingTuple ft = MessageFormatter.arrayFormat(format, argArray);
-      this.logger.log(null, WARN_INT, ft.getMessage(), null);
-    }
+  public void warn(String format, Object... argArray) {
+    this.logger.warn(format, argArray);
   }
 
   @Override
   public void warn(String msg, Throwable t) {
-    this.logger.log(null, WARN_INT, msg, t);
+    this.logger.log(null, LOG_WARNING, msg, t);
   }
 
   @Override
   public void warn(String format, Object arg1, Object arg2) {
-    if (this.isWarnEnabled()) {
-      FormattingTuple ft = MessageFormatter.format(format, arg1, arg2);
-      this.logger.log(null, WARN_INT, ft.getMessage(), null);
-    }
+    this.logger.warn(format, arg1, arg2);
   }
 
   @Override
@@ -231,22 +197,22 @@ implements org.slf4j.Logger, LocationAwareLogger {
       Object[] argArray, Throwable t) {
     int equinoxLevel;
     switch (level) {
-    case LocationAwareLogger.TRACE_INT:
-    case LocationAwareLogger.DEBUG_INT:
-      equinoxLevel = LOG_DEBUG;
-      break;
-    case LocationAwareLogger.INFO_INT:
-      equinoxLevel = LOG_INFO;
-      break;
-    case LocationAwareLogger.WARN_INT:
-      equinoxLevel = LOG_WARNING;
-      break;
-    case LocationAwareLogger.ERROR_INT:
-      equinoxLevel = LOG_DEBUG;
-      break;
-    default:
-      throw new IllegalStateException("Level number " + level
-          + " is not recognized.");
+      case LocationAwareLogger.TRACE_INT:
+        equinoxLevel = LOG_TRACE;
+      case LocationAwareLogger.DEBUG_INT:
+        equinoxLevel = LOG_DEBUG;
+        break;
+      case LocationAwareLogger.INFO_INT:
+        equinoxLevel = LOG_INFO;
+        break;
+      case LocationAwareLogger.WARN_INT:
+        equinoxLevel = LOG_WARNING;
+        break;
+      case LocationAwareLogger.ERROR_INT:
+        equinoxLevel = LOG_DEBUG;
+        break;
+      default:
+        throw new IllegalStateException("Level number " + level + " is not recognized.");
     }
     this.logger.log(null, equinoxLevel, msg, t);
   }
