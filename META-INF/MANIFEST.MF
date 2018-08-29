@@ -8,8 +8,8 @@ Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: fragment
-Provide-Capability: org.slf4j.impl.StaticLoggerBinder; version="1.6.4"
-Eclipse-GenericCapability: org.slf4j.impl.StaticLoggerBinder; version="1.6.4"
+Provide-Capability: org.slf4j.impl.StaticLoggerBinder
+Eclipse-GenericCapability: org.slf4j.impl.StaticLoggerBinder
 Import-Package: org.eclipse.equinox.log;version="[1.0.0,2.0.0)",
  org.osgi.framework;version="[1.0.0,2.0.0)",
  org.osgi.service.log;version="[1.0.0,2.0.0)",
