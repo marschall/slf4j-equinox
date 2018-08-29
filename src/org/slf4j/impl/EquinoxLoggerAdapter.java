@@ -5,6 +5,8 @@ import static org.osgi.service.log.LogService.LOG_ERROR;
 import static org.osgi.service.log.LogService.LOG_INFO;
 import static org.osgi.service.log.LogService.LOG_WARNING;
 
+import java.util.Objects;
+
 import org.eclipse.equinox.log.Logger;
 import org.slf4j.Marker;
 import org.slf4j.helpers.FormattingTuple;
@@ -19,7 +21,8 @@ import org.slf4j.spi.LocationAwareLogger;
  * @author Philippe Marschall
  */
 final class EquinoxLoggerAdapter extends MarkerIgnoringBase implements org.slf4j.Logger, LocationAwareLogger {
-  
+
+  private static final long serialVersionUID = 1L;
 
   /**
    * Anything that is not one of LOG_DEBUG, LOG_ERROR, LOG_INFO, LOG_WARNING is trace.
@@ -28,9 +31,12 @@ final class EquinoxLoggerAdapter extends MarkerIgnoringBase implements org.slf4j
 
   //TODO should the marker be the equinox log context?
 
-  private final Logger logger;
+  private final transient Logger logger;
 
-  EquinoxLoggerAdapter(Logger logger) {
+  EquinoxLoggerAdapter(String name, Logger logger) {
+    Objects.requireNonNull(name, "name");
+    Objects.requireNonNull(logger, "logger");
+    this.name = name;
     this.logger = logger;
   }
 
@@ -83,11 +89,6 @@ final class EquinoxLoggerAdapter extends MarkerIgnoringBase implements org.slf4j
   @Override
   public void error(String format, Object arg1, Object arg2) {
     this.logger.error(format, arg1, arg2);
-  }
-
-  @Override
-  public String getName() {
-    return this.logger.getName();
   }
 
   @Override

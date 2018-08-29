@@ -66,7 +66,8 @@ final class EquinoxLoggerFactory implements ILoggerFactory {
   public Logger getLogger(String name) {
     Logger slf4jLogger = this.loggerMap.get(name);
     if (slf4jLogger == null) {
-      Logger newLoggerAdapter = new EquinoxLoggerAdapter(this.logService.getLogger(name));
+      org.eclipse.equinox.log.Logger equinoxLogger = this.logService.getLogger(name);
+      Logger newLoggerAdapter = new EquinoxLoggerAdapter(name, equinoxLogger);
       Logger previousLogger = this.loggerMap.putIfAbsent(name, newLoggerAdapter);
       if (previousLogger == null) {
         slf4jLogger = newLoggerAdapter;
