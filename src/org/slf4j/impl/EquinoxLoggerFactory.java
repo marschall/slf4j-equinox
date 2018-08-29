@@ -35,6 +35,7 @@ final class EquinoxLoggerFactory implements ILoggerFactory {
 
     Bundle bundle = FrameworkUtil.getBundle(EquinoxLoggerFactory.class);
     // start the bundle so that we have a bundle context
+    // maybe the bundle is not started because it has no Bundle-ActivationPolicy: lazy
     if (bundle.getState() == Bundle.RESOLVED) {
       try {
         bundle.start();
@@ -76,6 +77,5 @@ final class EquinoxLoggerFactory implements ILoggerFactory {
     }
     return slf4jLogger;
   }
-
 
 }
