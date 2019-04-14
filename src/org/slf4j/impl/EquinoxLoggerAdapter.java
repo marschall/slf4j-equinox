@@ -9,9 +9,7 @@ import java.util.Objects;
 
 import org.eclipse.equinox.log.Logger;
 import org.slf4j.Marker;
-import org.slf4j.helpers.FormattingTuple;
 import org.slf4j.helpers.MarkerIgnoringBase;
-import org.slf4j.helpers.MessageFormatter;
 import org.slf4j.spi.LocationAwareLogger;
 
 /**
