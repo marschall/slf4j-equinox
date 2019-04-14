@@ -1,6 +1,6 @@
 SLF4J Equinox
 =============
-This is an implementation [SLF4J](https://www.slf4j.org) using the [Equinox](https://www.eclipse.org/equinox/ [ExtendedLogService](https://bugs.eclipse.org/bugs/show_bug.cgi?id=260672).
+This is an implementation of [SLF4J](https://www.slf4j.org) using the [Equinox](https://www.eclipse.org/equinox/) [ExtendedLogService](https://bugs.eclipse.org/bugs/show_bug.cgi?id=260672).
 
 In plain words it makes all code that uses SLF4J and log to Equinox <code>.metadata/.log</code> log file. It does this by redirecting all the log messages to the Equinox ExtendedLogService. This is mostly interesting for code that runs inside Eclipse RCP applications. This does _not_ make Equinox use SLF4J. 
 
@@ -9,10 +9,10 @@ The implementation uses the same techniques as the <code>ch.qos.logback.slf4j</c
 Caveats
 -------
 
- * the Equinox context object is always <code>null</code>
+ * the Equinox context object is always `null`
  * the SLF4J markers are ignored
 
-This shouldn't be installed along side <code>ch.qos.logback.slf4j</code>. There's a p2 negation requirement taking care of this.
+This shouldn't be installed along side `ch.qos.logback.slf4j` or `org.slf4j.impl.log4j12` There's a p2 negation requirement taking care of this.
 
 Implementation Notes
 --------------------
@@ -25,16 +25,22 @@ Since a bundle can not have an activator we have to manually get a <code>BundleC
 
 Building
 --------
-If you want to build this project then you need [Maven 3](http://maven.apache.org/) and add the following section to your <code>settings.xml</code>
+If you want to build this project then you need [Maven 3](https://maven.apache.org/) and add the following section to your <code>settings.xml</code>
 
 ```xml
-<repositories>
-  <repository>
-    <id>indigo</id>
-    <layout>p2</layout>
-    <url>http://download.eclipse.org/releases/indigo</url>
-  </repository>
-</repositories>
+<profile>
+  <id>photon</id>
+  <activation>
+    <activeByDefault>false</activeByDefault>
+  </activation>
+  <repositories>
+    <repository>
+      <id>photon</id>
+      <layout>p2</layout>
+      <url>http://download.eclipse.org/releases/photon</url>
+    </repository>
+  </repositories>
+</profile>
 ```
 
 Publishing
