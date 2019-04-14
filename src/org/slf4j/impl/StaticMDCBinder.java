@@ -29,6 +29,11 @@ public final class StaticMDCBinder {
     return new BasicMDCAdapter();
   }
 
+  /**
+   * Retrieve the adapter class name.
+   *
+   * @return rhe adapter class name
+   */
   public String getMDCAdapterClassStr() {
     return BasicMDCAdapter.class.getName();
   }
