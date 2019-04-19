@@ -22,6 +22,8 @@ public final class StaticMDCBinder {
   /**
    * Currently this method always returns an instance of
    * {@link BasicMDCAdapter}.
+   *
+   * @return an MDC adapter
    */
   public MDCAdapter getMDCA() {
     // note that this method is invoked only from within the static initializer of
