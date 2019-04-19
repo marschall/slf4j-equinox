@@ -24,6 +24,14 @@
     <system>GitHub Issues</system>
   </issueManagement>
 
+  <licenses>
+    <license>
+      <name>EPL-2.0</name>
+      <url>https://www.eclipse.org/org/documents/epl-2.0/EPL-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
   <developers>
     <developer>
       <id>marschall</id>

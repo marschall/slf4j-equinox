@@ -8,6 +8,10 @@ Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: fragment
+Bundle-Copyright: Copyright (c) Philippe Marschall (2012, 2019). All Rights Reserved.
+Bundle-License: EPL-2.0;
+ description="Eclipse Public License, Version 1.0";
+ link="https://www.eclipse.org/org/documents/epl-2.0/EPL-2.0.txt"
 Provide-Capability: org.slf4j.impl.StaticLoggerBinder
 Eclipse-GenericCapability: org.slf4j.impl.StaticLoggerBinder
 Import-Package: org.eclipse.equinox.log;version="[1.0.0,2.0.0)",
