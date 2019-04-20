@@ -1,4 +1,4 @@
-SLF4J Equinox
+SLF4J Equinox [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.marschall/com.github.marschall.slf4j-equinox/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.marschall/com.github.marschall.slf4j-equinox) [![Javadocs](https://www.javadoc.io/badge/com.github.marschall/com.github.marschall.slf4j-equinox.svg)](https://www.javadoc.io/doc/com.github.marschall/com.github.marschall.slf4j-equinox)
 =============
 This is an implementation of [SLF4J](https://www.slf4j.org) using the [Equinox](https://www.eclipse.org/equinox/) [ExtendedLogService](https://bugs.eclipse.org/bugs/show_bug.cgi?id=260672).
 
