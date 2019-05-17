@@ -14,6 +14,8 @@ Caveats
 
 This shouldn't be installed along side `ch.qos.logback.slf4j` or `org.slf4j.impl.log4j12` There's a p2 negation requirement taking care of this.
 
+There are two SLF4J bundles the Maven artifact uses `slf4j.api` the [Orbit](https://www.eclipse.org/orbit/) uses `org.slf4j.api`.
+
 Implementation Notes
 --------------------
 
