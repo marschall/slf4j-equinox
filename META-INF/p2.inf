@@ -21,3 +21,10 @@ requires.2.namespace = org.eclipse.equinox.p2.iu
 requires.2.name = org.slf4j.impl.log4j12
 requires.2.min = 0
 requires.2.max = 0
+
+# Prevent slf4j.log4j12 from being installed at the same time
+# http://eclipsesource.com/blogs/2012/03/15/publishing-negative-requirements/
+requires.3.namespace = org.eclipse.equinox.p2.iu
+requires.3.name = slf4j.log4j12
+requires.3.min = 0
+requires.3.max = 0
