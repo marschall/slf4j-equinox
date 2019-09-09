@@ -21,7 +21,7 @@ Implementation Notes
 
 We keep a <code>ConcurrentHashMap</code> of strings to logger adapters. A <code>ConcurrentHashMap</code> uses more memory than <code>HashMap</code> but allows for concurrent lookups even though <code>ExtendedLogServiceImpl#getLogger</code> is <code>synchronized</code>. The values are not weak for now as <code>Log4jLoggerFactory</code> doesn't use weak values as well.
 
-Although <code>Eclipse-GenericCapability</code> is depreacated using <code>Provide-Capability</code> instead doesn't pass plugin validation in PDE.
+Although <code>Eclipse-GenericCapability</code> is deprecated using <code>Provide-Capability</code> instead doesn't pass plugin validation in PDE.
 
 Since a bundle can not have an activator we have to manually get a <code>BundleContext</code> using <code>FrameworkUtil</code>. However at this point the <code>org.slf4j.api</code> bundle is only resolve so we need to manually start it.
 
