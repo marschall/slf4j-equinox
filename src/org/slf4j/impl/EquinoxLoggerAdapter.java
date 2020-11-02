@@ -131,7 +131,7 @@ final class EquinoxLoggerAdapter extends MarkerIgnoringBase implements org.slf4j
 
   @Override
   public boolean isTraceEnabled() {
-    return this.isTraceEnabled();
+    return this.logger.isTraceEnabled();
   }
 
   @Override
@@ -141,17 +141,17 @@ final class EquinoxLoggerAdapter extends MarkerIgnoringBase implements org.slf4j
 
   @Override
   public void trace(String msg) {
-    this.trace(msg);
+    this.logger.trace(msg);
   }
 
   @Override
   public void trace(String format, Object arg) {
-    this.trace(format, arg);
+    this.logger.trace(format, arg);
   }
 
   @Override
   public void trace(String format, Object... argArray) {
-    this.trace(format, argArray);
+    this.logger.trace(format, argArray);
   }
 
   @Override
@@ -161,19 +161,17 @@ final class EquinoxLoggerAdapter extends MarkerIgnoringBase implements org.slf4j
 
   @Override
   public void trace(String format, Object arg1, Object arg2) {
-    this.trace(format, arg1, arg2);
+    this.logger.trace(format, arg1, arg2);
   }
 
   @Override
   public void warn(String msg) {
     this.logger.warn(msg);
-
   }
 
   @Override
   public void warn(String format, Object arg) {
     this.logger.warn(format, arg);
-
   }
 
   @Override
