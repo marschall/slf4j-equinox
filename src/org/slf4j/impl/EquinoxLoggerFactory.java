@@ -31,7 +31,7 @@ final class EquinoxLoggerFactory implements ILoggerFactory {
 
   EquinoxLoggerFactory() {
     // this is a bit hairy
-    // since we're a bundle we can't have an activator we have to work around this
+    // since we a fragment and not a bundle we can't have an activator we have to work around this
 
     Bundle bundle = FrameworkUtil.getBundle(EquinoxLoggerFactory.class);
     // start the bundle so that we have a bundle context
