@@ -66,7 +66,7 @@
             <link>https://docs.oracle.com/javase/8/docs/api/</link>
             <link>https://www.slf4j.org/apidocs/</link>
           </links>
-          <source>8</source>
+          <release>8</release>
           <notimestamp>true</notimestamp>
         </configuration>
         <executions>
@@ -125,8 +125,7 @@
         <groupId>org.eclipse.tycho</groupId>
         <artifactId>tycho-compiler-plugin</artifactId>
         <configuration>
-          <source>${source.version}</source>
-          <target>${target.version}</target>
+          <release>8</release>
         </configuration>
       </plugin>
       <plugin>
@@ -272,8 +271,6 @@
     <project.build.outputTimestamp>2023-01-01T00:00:00Z</project.build.outputTimestamp>
     <project.reporting.outputEncoding>utf-8</project.reporting.outputEncoding>
     <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
-    <source.version>1.8</source.version>
-    <target.version>1.8</target.version>
   </properties>
 
 </project>
