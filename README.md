@@ -1,8 +1,9 @@
 SLF4J Equinox [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.marschall/com.github.marschall.slf4j-equinox/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.marschall/com.github.marschall.slf4j-equinox) [![Javadocs](https://www.javadoc.io/badge/com.github.marschall/com.github.marschall.slf4j-equinox.svg)](https://www.javadoc.io/doc/com.github.marschall/com.github.marschall.slf4j-equinox)
 =============
+
 This is an implementation of [SLF4J](https://www.slf4j.org) using the [Equinox](https://www.eclipse.org/equinox/) [ExtendedLogService](https://bugs.eclipse.org/bugs/show_bug.cgi?id=260672).
 
-In plain words it makes all code that uses SLF4J and log to Equinox <code>.metadata/.log</code> log file. It does this by redirecting all the log messages to the Equinox ExtendedLogService. This is mostly interesting for code that runs inside Eclipse RCP applications. This does _not_ make Equinox use SLF4J. 
+In plain words it makes all code that uses SLF4J log to the Equinox <code>.metadata/.log</code> log file. It does this by redirecting all the log messages to the Equinox `ExtendedLogService`. This is mostly interesting for code that runs inside Eclipse RCP applications. This does _not_ make Equinox use SLF4J. 
 
 The implementation uses the same techniques as the <code>ch.qos.logback.slf4j</code> bundle.
 
@@ -23,7 +24,7 @@ We keep a <code>ConcurrentHashMap</code> of strings to logger adapters. A <code>
 
 Although <code>Eclipse-GenericCapability</code> is deprecated using <code>Provide-Capability</code> instead doesn't pass plugin validation in PDE.
 
-Since a bundle can not have an activator we have to manually get a <code>BundleContext</code> using <code>FrameworkUtil</code>. However at this point the <code>org.slf4j.api</code> bundle is only resolve so we need to manually start it.
+Since a fragment can not have an activator we have to manually get a <code>BundleContext</code> using <code>FrameworkUtil</code>. However at this point the <code>org.slf4j.api</code> bundle is only resolved so we need to manually start it.
 
 Building
 --------
@@ -47,6 +48,7 @@ If you want to build this project then you need [Maven 3](https://maven.apache.o
 
 Publishing
 ----------
+
 To publish the artifact to a p2 site (or build a new one) you can use the [Features And Bundles Publisher Application](http://wiki.eclipse.org/Equinox/p2/Publisher#Features_And_Bundles_Publisher_Application)
 
 ```sh
@@ -62,6 +64,7 @@ java -jar <targetProductFolder>/plugins/org.eclipse.equinox.launcher_*.jar \
 
 Installing
 ----------
+
 You can install form the site you built above using the [p2 director application](http://help.eclipse.org/indigo/index.jsp?topic=/org.eclipse.platform.doc.isv/guide/p2_director.html)
 
 ```sh
