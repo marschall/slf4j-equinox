@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Fragment-Host: org.slf4j.api;bundle-version="[1.6.0,1.8.0)"
+Fragment-Host: org.slf4j.api;bundle-version="[2.0.0,3.0.0)"
 Bundle-SymbolicName: com.github.marschall.slf4j-equinox;singleton:=true
 Bundle-Version: 0.3.1.qualifier
 Bundle-Vendor: %providerName
@@ -14,6 +14,7 @@ Bundle-License: EPL-2.0;
  link="https://www.eclipse.org/org/documents/epl-2.0/EPL-2.0.txt"
 Provide-Capability: org.slf4j.impl.StaticLoggerBinder
 Eclipse-GenericCapability: org.slf4j.impl.StaticLoggerBinder
+Export-Package: org.slf4j.impl
 Import-Package: org.eclipse.equinox.log;version="[1.0.0,2.0.0)",
  org.osgi.framework;version="[1.0.0,2.0.0)",
  org.osgi.service.log;version="[1.0.0,2.0.0)",
