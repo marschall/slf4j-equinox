@@ -5,9 +5,11 @@ import static org.osgi.service.log.LogService.LOG_ERROR;
 import static org.osgi.service.log.LogService.LOG_INFO;
 import static org.osgi.service.log.LogService.LOG_WARNING;
 
+import java.io.ObjectStreamException;
 import java.util.Objects;
 
 import org.eclipse.equinox.log.Logger;
+import org.slf4j.LoggerFactory;
 import org.slf4j.Marker;
 import org.slf4j.helpers.MarkerIgnoringBase;
 import org.slf4j.spi.LocationAwareLogger;
@@ -18,7 +20,7 @@ import org.slf4j.spi.LocationAwareLogger;
  *
  * @author Philippe Marschall
  */
-final class EquinoxLoggerAdapter extends MarkerIgnoringBase implements org.slf4j.Logger, LocationAwareLogger {
+final class EquinoxLoggerAdapter implements org.slf4j.Logger, LocationAwareLogger {
 
   private static final long serialVersionUID = 1L;
 
@@ -31,11 +33,18 @@ final class EquinoxLoggerAdapter extends MarkerIgnoringBase implements org.slf4j
 
   private final transient Logger logger;
 
+  private final String name;
+
   EquinoxLoggerAdapter(String name, Logger logger) {
     Objects.requireNonNull(name, "name");
     Objects.requireNonNull(logger, "logger");
     this.name = name;
     this.logger = logger;
+  }
+
+  @Override
+  public String getName() {
+    return this.name;
   }
 
   @Override
@@ -55,7 +64,7 @@ final class EquinoxLoggerAdapter extends MarkerIgnoringBase implements org.slf4j
 
   @Override
   public void debug(String msg, Throwable t) {
-    this.logger.log(null, LOG_DEBUG, msg, t);
+    this.logger.log(LOG_DEBUG, msg, t);
 
   }
 
@@ -81,7 +90,7 @@ final class EquinoxLoggerAdapter extends MarkerIgnoringBase implements org.slf4j
 
   @Override
   public void error(String msg, Throwable t) {
-    this.logger.log(null, LOG_ERROR, msg, t);
+    this.logger.log(LOG_ERROR, msg, t);
   }
 
   @Override
@@ -106,7 +115,7 @@ final class EquinoxLoggerAdapter extends MarkerIgnoringBase implements org.slf4j
 
   @Override
   public void info(String msg, Throwable t) {
-    this.logger.log(null, LOG_INFO, msg, t);
+    this.logger.log(LOG_INFO, msg, t);
   }
 
   @Override
@@ -120,7 +129,17 @@ final class EquinoxLoggerAdapter extends MarkerIgnoringBase implements org.slf4j
   }
 
   @Override
+  public boolean isDebugEnabled(Marker marker) {
+    return this.logger.isDebugEnabled();
+  }
+
+  @Override
   public boolean isErrorEnabled() {
+    return this.logger.isErrorEnabled();
+  }
+
+  @Override
+  public boolean isErrorEnabled(Marker marker) {
     return this.logger.isErrorEnabled();
   }
 
@@ -130,12 +149,26 @@ final class EquinoxLoggerAdapter extends MarkerIgnoringBase implements org.slf4j
   }
 
   @Override
+  public boolean isInfoEnabled(Marker marker) {
+    return this.logger.isInfoEnabled();
+  }
+
+  @Override
   public boolean isTraceEnabled() {
+    return this.logger.isTraceEnabled();
+  }
+  @Override
+  public boolean isTraceEnabled(Marker marker) {
     return this.logger.isTraceEnabled();
   }
 
   @Override
   public boolean isWarnEnabled() {
+    return this.logger.isWarnEnabled();
+  }
+
+  @Override
+  public boolean isWarnEnabled(Marker marker) {
     return this.logger.isWarnEnabled();
   }
 
@@ -190,28 +223,31 @@ final class EquinoxLoggerAdapter extends MarkerIgnoringBase implements org.slf4j
   }
 
   @Override
-  public void log(Marker marker, String callerFQCN, int level, String msg,
-      Object[] argArray, Throwable t) {
+  public void log(Marker marker, String callerFQCN, int level, String msg, Object[] argArray, Throwable t) {
     int equinoxLevel;
     switch (level) {
-      case LocationAwareLogger.TRACE_INT:
-        equinoxLevel = LOG_TRACE;
-      case LocationAwareLogger.DEBUG_INT:
-        equinoxLevel = LOG_DEBUG;
-        break;
-      case LocationAwareLogger.INFO_INT:
-        equinoxLevel = LOG_INFO;
-        break;
-      case LocationAwareLogger.WARN_INT:
-        equinoxLevel = LOG_WARNING;
-        break;
-      case LocationAwareLogger.ERROR_INT:
-        equinoxLevel = LOG_DEBUG;
-        break;
-      default:
-        throw new IllegalStateException("Level number " + level + " is not recognized.");
+    case LocationAwareLogger.TRACE_INT:
+      equinoxLevel = LOG_TRACE;
+    case LocationAwareLogger.DEBUG_INT:
+      equinoxLevel = LOG_DEBUG;
+      break;
+    case LocationAwareLogger.INFO_INT:
+      equinoxLevel = LOG_INFO;
+      break;
+    case LocationAwareLogger.WARN_INT:
+      equinoxLevel = LOG_WARNING;
+      break;
+    case LocationAwareLogger.ERROR_INT:
+      equinoxLevel = LOG_DEBUG;
+      break;
+    default:
+      throw new IllegalStateException("Level number " + level + " is not recognized.");
     }
-    this.logger.log(null, equinoxLevel, msg, t);
+    this.logger.log(equinoxLevel, msg, t);
+  }
+
+  private Object readResolve() throws ObjectStreamException {
+    return LoggerFactory.getLogger(this.name);
   }
 
 }
