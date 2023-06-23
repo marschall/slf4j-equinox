@@ -11,7 +11,6 @@ import java.util.Objects;
 import org.eclipse.equinox.log.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Marker;
-import org.slf4j.helpers.MarkerIgnoringBase;
 import org.slf4j.spi.LocationAwareLogger;
 
 /**
@@ -65,12 +64,36 @@ final class EquinoxLoggerAdapter implements org.slf4j.Logger, LocationAwareLogge
   @Override
   public void debug(String msg, Throwable t) {
     this.logger.log(LOG_DEBUG, msg, t);
-
   }
 
   @Override
   public void debug(String format, Object arg1, Object arg2) {
     this.logger.debug(format, arg1, arg2);
+  }
+
+  @Override
+  public void debug(Marker marker, String msg) {
+    this.debug(msg);
+  }
+
+  @Override
+  public void debug(Marker marker, String format, Object arg) {
+    this.debug(format, arg);
+  }
+
+  @Override
+  public void debug(Marker marker, String format, Object arg1, Object arg2) {
+    this.debug(format, arg1, arg2);
+  }
+
+  @Override
+  public void debug(Marker marker, String format, Object... arguments) {
+    this.debug(format, arguments);
+  }
+
+  @Override
+  public void debug(Marker marker, String msg, Throwable t) {
+    this.debug(msg, t);
   }
 
   @Override
@@ -99,6 +122,31 @@ final class EquinoxLoggerAdapter implements org.slf4j.Logger, LocationAwareLogge
   }
 
   @Override
+  public void error(Marker marker, String msg) {
+    this.error(msg);
+  }
+
+  @Override
+  public void error(Marker marker, String format, Object arg) {
+    this.error(format, arg);
+  }
+
+  @Override
+  public void error(Marker marker, String format, Object arg1, Object arg2) {
+    this.error(format, arg1, arg2);
+  }
+
+  @Override
+  public void error(Marker marker, String format, Object... arguments) {
+    this.error(format, arguments);
+  }
+
+  @Override
+  public void error(Marker marker, String msg, Throwable t) {
+    this.error(msg, t);
+  }
+
+  @Override
   public void info(String msg) {
     this.logger.info(msg);
   }
@@ -121,6 +169,31 @@ final class EquinoxLoggerAdapter implements org.slf4j.Logger, LocationAwareLogge
   @Override
   public void info(String format, Object arg1, Object arg2) {
     this.logger.info(format, arg1, arg2);
+  }
+
+  @Override
+  public void info(Marker marker, String msg) {
+    this.info(msg);
+  }
+
+  @Override
+  public void info(Marker marker, String format, Object arg) {
+    this.info(format, arg);
+  }
+
+  @Override
+  public void info(Marker marker, String format, Object arg1, Object arg2) {
+    this.info(format, arg1, arg2);
+  }
+
+  @Override
+  public void info(Marker marker, String format, Object... arguments) {
+    this.info(format, arguments);
+  }
+
+  @Override
+  public void info(Marker marker, String msg, Throwable t) {
+    this.info(msg, t);
   }
 
   @Override
@@ -198,6 +271,32 @@ final class EquinoxLoggerAdapter implements org.slf4j.Logger, LocationAwareLogge
   }
 
   @Override
+  public void trace(Marker marker, String msg) {
+    this.trace(msg);
+    
+  }
+
+  @Override
+  public void trace(Marker marker, String format, Object arg) {
+    this.trace(format, arg);
+  }
+
+  @Override
+  public void trace(Marker marker, String format, Object arg1, Object arg2) {
+    this.trace(format, arg1, arg2);
+    
+  }
+  @Override
+  public void trace(Marker marker, String format, Object... argArray) {
+    this.trace(format, argArray);
+    
+  }
+  @Override
+  public void trace(Marker marker, String msg, Throwable t) {
+    this.trace(msg, t);
+  }
+
+  @Override
   public void warn(String msg) {
     this.logger.warn(msg);
   }
@@ -220,6 +319,31 @@ final class EquinoxLoggerAdapter implements org.slf4j.Logger, LocationAwareLogge
   @Override
   public void warn(String format, Object arg1, Object arg2) {
     this.logger.warn(format, arg1, arg2);
+  }
+
+  @Override
+  public void warn(Marker marker, String msg) {
+    this.warn(msg);
+  }
+
+  @Override
+  public void warn(Marker marker, String format, Object arg) {
+    this.warn(format, arg);
+  }
+
+  @Override
+  public void warn(Marker marker, String format, Object arg1, Object arg2) {
+    this.warn(format, arg1, arg2);
+  }
+
+  @Override
+  public void warn(Marker marker, String format, Object... arguments) {
+    this.warn(format, arguments);
+  }
+
+  @Override
+  public void warn(Marker marker, String msg, Throwable t) {
+    this.warn(msg, t);
   }
 
   @Override

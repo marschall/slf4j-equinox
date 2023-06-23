@@ -3,6 +3,7 @@ package org.slf4j.impl;
 import org.slf4j.ILoggerFactory;
 import org.slf4j.IMarkerFactory;
 import org.slf4j.helpers.BasicMDCAdapter;
+import org.slf4j.helpers.BasicMarkerFactory;
 import org.slf4j.spi.MDCAdapter;
 import org.slf4j.spi.SLF4JServiceProvider;
 
@@ -35,7 +36,7 @@ public class EquinoxSLF4JServiceProvider implements SLF4JServiceProvider {
   @Override
   public void initialize() {
     this.loggerFactory = new EquinoxLoggerFactory();
-    this.markerFactory = new SimpleMarkerFactory();
+    this.markerFactory = new BasicMarkerFactory();
     this.mdcAdapter = new BasicMDCAdapter();
   }
 

@@ -1,0 +1,2 @@
+Require-Capability: osgi.extender;filter:="(osgi.extender=osgi.service
+ loader.registrar)",osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
