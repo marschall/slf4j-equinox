@@ -12,7 +12,8 @@ Bundle-Copyright: Copyright (c) Philippe Marschall (2012, 2019). All Rights Rese
 Bundle-License: EPL-2.0;
  description="Eclipse Public License, Version 1.0";
  link="https://www.eclipse.org/org/documents/epl-2.0/EPL-2.0.txt"
-Import-Package: org.osgi.framework;version="[1.0.0,2.0.0)",
+Import-Package: org.eclipse.equinox.log;version="[1.0.0,2.0.0)",
+ org.osgi.framework;version="[1.0.0,2.0.0)",
  org.osgi.service.log;version="[1.0.0,2.0.0)",
  org.osgi.util.tracker;version="[1.0.0,2.0.0)"
 Provide-Capability: osgi.serviceloader;osgi.serviceloader="org.slf4j.s
