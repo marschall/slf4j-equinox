@@ -139,7 +139,7 @@
         <configuration>
           <mavenExecutorId>forked-path</mavenExecutorId>
           <arguments>-Pdeploy-to-sonatype-oss,eclipse</arguments>
-          <preparationGoals>org.eclipse.tycho:tycho-versions-plugin:update-eclipse-metadata scm:add scm:checkin deploy</preparationGoals>
+          <preparationGoals>org.eclipse.tycho:tycho-versions-plugin:update-eclipse-metadata scm:add scm:checkin</preparationGoals>
           <completionGoals>org.eclipse.tycho:tycho-versions-plugin:update-eclipse-metadata scm:add scm:checkin</completionGoals>
         </configuration>
       </plugin>

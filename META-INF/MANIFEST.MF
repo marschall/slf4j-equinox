@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Fragment-Host: slf4j.api;bundle-version="[2.0.0,3.0.0)"
 Bundle-SymbolicName: com.github.marschall.slf4j-equinox;singleton:=true
-Bundle-Version: 2.0.1
+Bundle-Version: 2.0.1.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
@@ -17,5 +17,3 @@ Import-Package: org.osgi.framework;version="[1.0.0,2.0.0)",
  org.osgi.util.tracker;version="[1.0.0,2.0.0)"
 Provide-Capability: osgi.serviceloader;osgi.serviceloader="org.slf4j.s
  pi.SLF4JServiceProvider"
-Provide-Capability: osgi.serviceloader;
- osgi.serviceloader=org.slf4j.spi.SLF4JServiceProvider
