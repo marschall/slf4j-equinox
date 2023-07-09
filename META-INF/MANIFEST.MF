@@ -1,13 +1,13 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Fragment-Host: slf4j.api;bundle-version="[2.0.0,3.0.0)"
 Bundle-SymbolicName: com.github.marschall.slf4j-equinox;singleton:=true
 Bundle-Version: 2.0.2.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Bundle-Localization: fragment
+Bundle-Activator: org.slf4j.impl.EquinoxSLF4JBundleActivator
+Bundle-Localization: plugin
 Bundle-Copyright: Copyright (c) Philippe Marschall (2012, 2019). All Rights Reserved.
 Bundle-License: EPL-2.0;
  description="Eclipse Public License, Version 1.0";
@@ -15,6 +15,9 @@ Bundle-License: EPL-2.0;
 Import-Package: org.eclipse.equinox.log;version="[1.0.0,2.0.0)",
  org.osgi.framework;version="[1.0.0,2.0.0)",
  org.osgi.service.log;version="[1.0.0,2.0.0)",
- org.osgi.util.tracker;version="[1.0.0,2.0.0)"
+ org.osgi.util.tracker;version="[1.0.0,2.0.0)",
+ org.slf4j;version="[2.0.0,3.0.0)",
+ org.slf4j.helpers;version="[2.0.0,3.0.0)",
+ org.slf4j.spi;version="[2.0.0,3.0.0)"
 Provide-Capability: osgi.serviceloader;osgi.serviceloader="org.slf4j.s
  pi.SLF4JServiceProvider"

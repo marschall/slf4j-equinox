@@ -7,6 +7,8 @@ In plain words it makes all code that uses SLF4J log to the Equinox <code>.metad
 
 The implementation uses the same techniques as the <code>ch.qos.logback.slf4j</code> bundle.
 
+Versions 2.x are fore SLF4J 2.
+
 Caveats
 -------
 
@@ -32,15 +34,15 @@ If you want to build this project then you need [Maven 3](https://maven.apache.o
 
 ```xml
 <profile>
-  <id>photon</id>
+  <id>eclipse</id>
   <activation>
     <activeByDefault>false</activeByDefault>
   </activation>
   <repositories>
     <repository>
-      <id>photon</id>
+      <id>eclipse-27</id>
       <layout>p2</layout>
-      <url>http://download.eclipse.org/releases/photon</url>
+      <url>https://download.eclipse.org/eclipse/updates/4.27/</url>
     </repository>
   </repositories>
 </profile>

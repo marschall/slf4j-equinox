@@ -4,12 +4,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 import org.eclipse.equinox.log.ExtendedLogService;
-import org.osgi.framework.Bundle;
-import org.osgi.framework.BundleContext;
-import org.osgi.framework.BundleEvent;
-import org.osgi.framework.BundleException;
-import org.osgi.framework.FrameworkUtil;
-import org.osgi.util.tracker.ServiceTracker;
 import org.slf4j.ILoggerFactory;
 import org.slf4j.Logger;
 
@@ -30,53 +24,16 @@ final class EquinoxLoggerFactory implements ILoggerFactory {
   private final ExtendedLogService logService;
 
   EquinoxLoggerFactory() {
-    // this is a bit hairy
-    // since we are fragment and not a bundle we can't have an activator we have to work around this
-
-    Bundle bundle = FrameworkUtil.getBundle(EquinoxLoggerFactory.class);
-    // start the bundle so that we have a bundle context
-    // maybe the bundle is not started because it has no Bundle-ActivationPolicy: lazy
-    if (bundle.getState() == Bundle.RESOLVED) {
-      try {
-        bundle.start();
-      } catch (BundleException e) {
-        throw new RuntimeException("could not start bundle", e);
-      }
-    }
-    // reimplement BundleActivator#start()
-    BundleContext context = bundle.getBundleContext();
-    ServiceTracker<?, ExtendedLogService> serviceTracker =
-        new ServiceTracker<>(context, ExtendedLogService.class, null);
-
-    serviceTracker.open();
-    // reimplement BundleActivator#stop()
-    context.addBundleListener((BundleEvent event) -> {
-      if (event.getBundle().getBundleId() == bundle.getBundleId()
-          && event.getType() == BundleEvent.STOPPING) {
-        serviceTracker.close();
-      }
-    });
-
-
-    this.logService = serviceTracker.getService();
+    this.logService = EquinoxSLF4JBundleActivator.getDefaultInstance().getExtendedLogService();
     this.loggerMap = new ConcurrentHashMap<>();
   }
 
   @Override
   public Logger getLogger(String name) {
-    Logger slf4jLogger = this.loggerMap.get(name);
-    if (slf4jLogger == null) {
-      org.eclipse.equinox.log.Logger equinoxLogger = this.logService.getLogger(name);
-      Logger newLoggerAdapter = new EquinoxLoggerAdapter(name, equinoxLogger);
-      Logger previousLogger = this.loggerMap.putIfAbsent(name, newLoggerAdapter);
-      if (previousLogger == null) {
-        slf4jLogger = newLoggerAdapter;
-      } else {
-        slf4jLogger = previousLogger;
-      }
-
-    }
-    return slf4jLogger;
+    return this.loggerMap.computeIfAbsent(name, n -> {
+      org.eclipse.equinox.log.Logger equinoxLogger = this.logService.getLogger(n);
+      return new EquinoxLoggerAdapter(name, equinoxLogger);
+      });
   }
 
 }
