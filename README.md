@@ -5,8 +5,6 @@ This is an implementation of [SLF4J](https://www.slf4j.org) using the [Equinox](
 
 In plain words it makes all code that uses SLF4J log to the Equinox <code>.metadata/.log</code> log file. It does this by redirecting all the log messages to the Equinox `ExtendedLogService`. This is mostly interesting for code that runs inside Eclipse RCP applications. This does _not_ make Equinox use SLF4J. 
 
-The implementation uses the same techniques as the <code>ch.qos.logback.slf4j</code> bundle.
-
 Versions 2.x are fore SLF4J 2.
 
 Caveats
@@ -15,7 +13,7 @@ Caveats
  * the Equinox context object is always `null`
  * the SLF4J markers are ignored
 
-This shouldn't be installed along side `ch.qos.logback.slf4j` or `org.slf4j.impl.log4j12` There's a p2 negation requirement taking care of this.
+This shouldn't be installed along side `ch.qos.logback.slf4j` or `org.slf4j.impl.log4j12`.
 
 There are two SLF4J bundles the Maven artifact uses `slf4j.api` the [Orbit](https://www.eclipse.org/orbit/) uses `org.slf4j.api`.
 
@@ -24,9 +22,7 @@ Implementation Notes
 
 We keep a <code>ConcurrentHashMap</code> of strings to logger adapters. A <code>ConcurrentHashMap</code> uses more memory than <code>HashMap</code> but allows for concurrent lookups even though <code>ExtendedLogServiceImpl#getLogger</code> is <code>synchronized</code>. The values are not weak for now as <code>Log4jLoggerFactory</code> doesn't use weak values as well.
 
-Although <code>Eclipse-GenericCapability</code> is deprecated using <code>Provide-Capability</code> instead doesn't pass plugin validation in PDE.
-
-Since a fragment can not have an activator we have to manually get a <code>BundleContext</code> using <code>FrameworkUtil</code>. However at this point the <code>org.slf4j.api</code> bundle is only resolved so we need to manually start it.
+We rely on [OSGi Service Loader Mediator](https://eclipse.dev/eclipse/news/4.28/platform.php#slf4j.api-version-2)
 
 Building
 --------
@@ -40,9 +36,13 @@ If you want to build this project then you need [Maven 3](https://maven.apache.o
   </activation>
   <repositories>
     <repository>
-      <id>eclipse-27</id>
+      <id>eclipse-28</id>
       <layout>p2</layout>
-      <url>https://download.eclipse.org/eclipse/updates/4.27/</url>
+      <url>https://download.eclipse.org/eclipse/updates/4.28/</url>
+    </repository>
+    <repository>
+      <id>eclipse-28-local</id>
+      <url>file:///home/user/bin/eclipse/eclipse-4.28</url>
     </repository>
   </repositories>
 </profile>

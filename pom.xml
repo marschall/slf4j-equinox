@@ -49,20 +49,13 @@
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
       <version>2.0.7</version>
-    </dependency>
-    <!-- 
-      https://aries.apache.org/documentation/modules/spi-fly.html#specificconf
-      https://stackoverflow.com/questions/43775025/after-jetty-update-to-9-4-x-missing-constraint-require-capability-osgi-extend
-     -->
-    <dependency>
-      <groupId>org.apache.aries.spifly</groupId>
-      <artifactId>org.apache.aries.spifly.dynamic.bundle</artifactId>
-      <version>1.3.6</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.eclipse.platform</groupId>
       <artifactId>org.eclipse.core.runtime</artifactId>
       <version>3.27.0</version>
+      <scope>provided</scope>
     </dependency>
   </dependencies>
 
@@ -195,7 +188,7 @@
       <plugins>
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
-          <version>3.2.0</version>
+          <version>3.3.1</version>
         </plugin>
         <plugin>
           <artifactId>maven-deploy-plugin</artifactId>
@@ -219,7 +212,7 @@
         </plugin>
         <plugin>
           <artifactId>maven-release-plugin</artifactId>
-          <version>3.0.0</version>
+          <version>3.0.1</version>
         </plugin>
         <plugin>
           <artifactId>maven-resources-plugin</artifactId>
@@ -235,7 +228,7 @@
         </plugin>
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>3.1.0</version>
+          <version>3.1.2</version>
         </plugin>
         <plugin>
           <groupId>org.eclipse.tycho</groupId>

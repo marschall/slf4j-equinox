@@ -8,9 +8,9 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.slf4j.impl.EquinoxSLF4JBundleActivator
 Bundle-Localization: plugin
-Bundle-Copyright: Copyright (c) Philippe Marschall (2012, 2019). All Rights Reserved.
+Bundle-Copyright: Copyright (c) Philippe Marschall (2012, 2023). All Rights Reserved.
 Bundle-License: EPL-2.0;
- description="Eclipse Public License, Version 1.0";
+ description="Eclipse Public License, Version 2.0";
  link="https://www.eclipse.org/org/documents/epl-2.0/EPL-2.0.txt"
 Import-Package: org.eclipse.equinox.log;version="[1.0.0,2.0.0)",
  org.osgi.framework;version="[1.0.0,2.0.0)",
@@ -19,5 +19,5 @@ Import-Package: org.eclipse.equinox.log;version="[1.0.0,2.0.0)",
  org.slf4j;version="[2.0.0,3.0.0)",
  org.slf4j.helpers;version="[2.0.0,3.0.0)",
  org.slf4j.spi;version="[2.0.0,3.0.0)"
-Provide-Capability: osgi.serviceloader;osgi.serviceloader="org.slf4j.s
- pi.SLF4JServiceProvider"
+Provide-Capability: osgi.serviceloader;osgi.serviceloader=org.slf4j.impl.EquinoxSLF4JServiceProvider
+Require-Capability: osgi.extender;filter:="(osgi.extender=osgi.serviceloader.registrar)"
