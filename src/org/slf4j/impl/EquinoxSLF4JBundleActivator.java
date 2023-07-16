@@ -14,6 +14,9 @@ public final class EquinoxSLF4JBundleActivator implements BundleActivator {
 
   private volatile ServiceTracker<?, ExtendedLogService> serviceTracker;
 
+  /**
+   * Default constructor to be called by OSGi.
+   */
   public EquinoxSLF4JBundleActivator() {
     defaultInstance = this;
   }
