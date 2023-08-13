@@ -13,9 +13,9 @@ Caveats
  * the Equinox context object is always `null`
  * the SLF4J markers are ignored
 
-This shouldn't be installed along side `ch.qos.logback.slf4j` or `org.slf4j.impl.log4j12`.
+This shouldn't be installed along side `ch.qos.logback.slf4j`, `org.slf4j.impl.log4j12` or , `slf4j.nop`.
 
-There are two SLF4J bundles the Maven artifact uses `slf4j.api` the [Orbit](https://www.eclipse.org/orbit/) uses `org.slf4j.api`.
+There are two SLF4J bundles the Maven artifact uses `slf4j.api` the [Orbit](https://www.eclipse.org/orbit/) uses `slf4j.api`.
 
 Implementation Notes
 --------------------
@@ -51,7 +51,7 @@ If you want to build this project then you need [Maven 3](https://maven.apache.o
 Publishing
 ----------
 
-To publish the artifact to a p2 site (or build a new one) you can use the [Features And Bundles Publisher Application](http://wiki.eclipse.org/Equinox/p2/Publisher#Features_And_Bundles_Publisher_Application)
+To publish the artifact to a p2 site (or build a new one) you can use the [Features And Bundles Publisher Application](https://wiki.eclipse.org/Equinox/p2/Publisher#Features_And_Bundles_Publisher_Application)
 
 ```sh
 java -jar <targetProductFolder>/plugins/org.eclipse.equinox.launcher_*.jar \
@@ -67,7 +67,7 @@ java -jar <targetProductFolder>/plugins/org.eclipse.equinox.launcher_*.jar \
 Installing
 ----------
 
-You can install form the site you built above using the [p2 director application](http://help.eclipse.org/indigo/index.jsp?topic=/org.eclipse.platform.doc.isv/guide/p2_director.html)
+You can install form the site you built above using the [p2 director application](https://help.eclipse.org/latest/index.jsp?topic=/org.eclipse.platform.doc.isv/guide/p2_director.html)
 
 ```sh
 java -jar <targetProductFolder>/plugins/org.eclipse.equinox.launcher_*.jar \
