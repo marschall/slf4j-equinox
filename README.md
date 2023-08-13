@@ -5,7 +5,9 @@ This is an implementation of [SLF4J](https://www.slf4j.org) using the [Equinox](
 
 In plain words it makes all code that uses SLF4J log to the Equinox <code>.metadata/.log</code> log file. It does this by redirecting all the log messages to the Equinox `ExtendedLogService`. This is mostly interesting for code that runs inside Eclipse RCP applications. This does _not_ make Equinox use SLF4J. 
 
-Versions 2.x are fore SLF4J 2.
+Versions 2.x are for SLF4J 2 and rely on `ServiceLoader`.
+
+Versions 1.x are for SLF4J 1 and are a fragment.
 
 Caveats
 -------
