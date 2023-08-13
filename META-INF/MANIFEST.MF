@@ -3,11 +3,11 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: com.github.marschall.slf4j-equinox;singleton:=true
 Bundle-Version: 2.0.5.qualifier
-Export-Package: org.slf4j.impl;uses:="org.slf4j,org.slf4j.spi"
+Export-Package: com.github.marschall.slf4j.equinox;uses:="org.slf4j,org.slf4j.spi"
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Bundle-Activator: org.slf4j.impl.EquinoxSLF4JBundleActivator
+Bundle-Activator: com.github.marschall.slf4j.equinox.EquinoxSLF4JBundleActivator
 Bundle-Localization: plugin
 Bundle-Copyright: Copyright (c) Philippe Marschall (2012, 2023). All Rights Reserved.
 Bundle-License: EPL-2.0;
@@ -22,8 +22,8 @@ Import-Package: org.eclipse.equinox.log;version="[1.0.0,2.0.0)",
  org.slf4j.spi;version="[2.0.0,3.0.0)"
 Provide-Capability: osgi.service;objectClass:List<String>="org.slf4j.spi
  .SLF4JServiceProvider";type=filter;effective:=active,osgi.serviceloader;os
- gi.serviceloader="org.slf4j.spi.SLF4JServiceProvider";register:="org.
- slf4j.impl.EquinoxSLF4JServiceProvider";type=equinox
+ gi.serviceloader="org.slf4j.spi.SLF4JServiceProvider";register:="com.
+ github.marschall.slf4j.equinox.EquinoxSLF4JServiceProvider";type=equinox
 Require-Capability: osgi.extender;filter:="(&(osgi.extender=osgi.service
  loader.registrar)(version>=1.0.0)(!(version>=2.0.0)))",osgi.ee;filter:=
  "(&(osgi.ee=JavaSE)(version=1.8))"

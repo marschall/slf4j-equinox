@@ -1,4 +1,4 @@
-package org.slf4j.impl;
+package com.github.marschall.slf4j.equinox;
 
 import static org.osgi.service.log.LogService.LOG_DEBUG;
 import static org.osgi.service.log.LogService.LOG_ERROR;

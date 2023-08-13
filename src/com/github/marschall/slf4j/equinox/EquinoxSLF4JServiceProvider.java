@@ -1,4 +1,4 @@
-package org.slf4j.impl;
+package com.github.marschall.slf4j.equinox;
 
 import org.eclipse.equinox.log.ExtendedLogService;
 import org.slf4j.ILoggerFactory;
