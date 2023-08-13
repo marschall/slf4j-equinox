@@ -3,6 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: com.github.marschall.slf4j-equinox;singleton:=true
 Bundle-Version: 2.0.4.qualifier
+Export-Package: org.slf4j.impl;uses:="org.slf4j,org.slf4j.spi"
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
@@ -19,5 +20,10 @@ Import-Package: org.eclipse.equinox.log;version="[1.0.0,2.0.0)",
  org.slf4j;version="[2.0.0,3.0.0)",
  org.slf4j.helpers;version="[2.0.0,3.0.0)",
  org.slf4j.spi;version="[2.0.0,3.0.0)"
-Provide-Capability: osgi.serviceloader;osgi.serviceloader=org.slf4j.impl.EquinoxSLF4JServiceProvider
-Require-Capability: osgi.extender;filter:="(osgi.extender=osgi.serviceloader.registrar)"
+Provide-Capability: osgi.service;objectClass:List<String>="org.slf4j.spi
+ .SLF4JServiceProvider";type=filter;effective:=active,osgi.serviceloader;os
+ gi.serviceloader="org.slf4j.spi.SLF4JServiceProvider";register:="org.
+ slf4j.impl.EquinoxSLF4JServiceProvider";type=equinox
+Require-Capability: osgi.extender;filter:="(&(osgi.extender=osgi.service
+ loader.registrar)(version>=1.0.0)(!(version>=2.0.0)))",osgi.ee;filter:=
+ "(&(osgi.ee=JavaSE)(version=1.8))"
