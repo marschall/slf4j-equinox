@@ -6,7 +6,7 @@ import org.osgi.framework.BundleContext;
 import org.osgi.util.tracker.ServiceTracker;
 
 /**
- * Bundle activator whos sole purpuse is to give access to {@link BundleContext}.
+ * Bundle activator whose sole purpose is to give access to {@link BundleContext}.
  */
 public final class EquinoxSLF4JBundleActivator implements BundleActivator {
 
