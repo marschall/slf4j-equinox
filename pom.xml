@@ -137,7 +137,6 @@
         <groupId>org.eclipse.tycho</groupId>
         <artifactId>target-platform-configuration</artifactId>
         <configuration>
-          <resolver>p2</resolver>
           <environments>
             <environment>
               <os>linux</os>
@@ -272,7 +271,7 @@
   </profiles>
 
   <properties>
-    <tycho-version>3.0.5</tycho-version>
+    <tycho-version>4.0.8</tycho-version>
     <project.build.outputTimestamp>2023-08-13T15:34:37Z</project.build.outputTimestamp>
     <project.reporting.outputEncoding>utf-8</project.reporting.outputEncoding>
     <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
