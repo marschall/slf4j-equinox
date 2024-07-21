@@ -38,13 +38,13 @@ If you want to build this project then you need [Maven 3](https://maven.apache.o
   </activation>
   <repositories>
     <repository>
-      <id>eclipse-28</id>
+      <id>eclipse-32</id>
       <layout>p2</layout>
-      <url>https://download.eclipse.org/eclipse/updates/4.28/</url>
+      <url>https://download.eclipse.org/eclipse/updates/4.32/</url>
     </repository>
     <repository>
       <id>eclipse-28-local</id>
-      <url>file:///home/user/bin/eclipse/eclipse-4.28</url>
+      <url>file:///home/user/bin/eclipse/eclipse-4.32</url>
     </repository>
   </repositories>
 </profile>
